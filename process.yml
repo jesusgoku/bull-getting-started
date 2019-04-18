@@ -1,0 +1,13 @@
+apps:
+  - name: server
+    script   : src/app.js
+    node_args: -r esm
+    instances: 4
+    exec_mode: cluster
+  - script : src/worker.js
+    node_args: -r esm
+    watch  : true
+    env    :
+      NODE_ENV: development
+    env_production:
+      NODE_ENV: production
